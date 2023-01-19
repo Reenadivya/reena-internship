@@ -48,13 +48,13 @@ const HotCollections = () => {
             nav={true}
             margin={10}
             responsive={{
-              600: {
+              0: {
                 items: 1,
               },
-              800: {
+              510: {
                 items: 2,
               },
-              1000: {
+              900: {
                 items: 3,
               },
               1200: {
