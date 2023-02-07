@@ -76,6 +76,7 @@ function NewItem({ data }) {
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Creator: Monica Lucas">
+              <img className="lazy" src={data?.authorImage} alt="" />
               <Skeleton width="50px" height="50px" borderRadius="50%" />
               <i className="fa fa-check"></i>
             </Link>
@@ -119,7 +120,7 @@ function NewItem({ data }) {
         <div className="nft__item">
           <div className="author_list_pp">
             <Link
-              to="/author"
+              to={`/author/${data?.authorId}`}
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Creator: Monica Lucas">
