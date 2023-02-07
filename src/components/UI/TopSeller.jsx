@@ -47,7 +47,7 @@ function TopSeller({ topSellersData }) {
         <div>
           <li>
             <div className="author_list_pp">
-              <Link to="/author">
+              <Link to={`/author/${topSellersData?.authorId}`}>
                 <img
                   className="lazy pp-author"
                   src={topSellersData?.authorImage}
@@ -57,7 +57,9 @@ function TopSeller({ topSellersData }) {
               </Link>
             </div>
             <div className="author_list_info">
-              <Link to="/author">{topSellersData?.authorName}</Link>
+              <Link to={`/author/${topSellersData?.authorId}`}>
+                {topSellersData?.authorName}
+              </Link>
               <span>{topSellersData?.price} ETH</span>
             </div>
           </li>
