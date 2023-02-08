@@ -2,29 +2,48 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "./Skeleton";
 
-function TopSeller({ topSellersData }) {
-  const [loading, setLoading] = useState(true);
+function TopSeller({ topSellersData, loading }) {
+  const [img, setImg] = useState();
 
   const mountedRef = useRef(true);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = topSellersData.authorImage;
-    img.onload = () => {
-      setTimeout(() => {
-        if (mountedRef) {
-          setLoading(false);
-        }
-      }, 1000);
-    };
-    return () => {
-      mountedRef.current = false;
-    };
-  }, [topSellersData.authorImage]);
+    if (!loading) {
+      const image = new Image();
+      image.src = topSellersData?.authorImage;
+      image.onload = () => {
+        setTimeout(() => {
+          if (mountedRef.current) {
+            setImg(image);
+          }
+        }, 300);
+      };
+      return () => {
+        mountedRef.current = false;
+      };
+    }
+  }, [topSellersData?.authorImage, loading]);
 
   return (
     <>
-      {loading ? (
+      {img && !loading ? (
+        <div>
+          <li>
+            <div className="author_list_pp">
+              <Link to={`/author/${topSellersData?.authorId}`}>
+                <img className="lazy pp-author" src={img.src} alt="" />
+                <i className="fa fa-check"></i>
+              </Link>
+            </div>
+            <div className="author_list_info">
+              <Link to={`/author/${topSellersData?.authorId}`}>
+                {topSellersData?.authorName}
+              </Link>
+              <span>{topSellersData?.price} ETH</span>
+            </div>
+          </li>
+        </div>
+      ) : (
         <div>
           <li>
             <div className="author_list_pp">
@@ -40,25 +59,6 @@ function TopSeller({ topSellersData }) {
               <span>
                 <Skeleton width="40px" height="20px" />
               </span>
-            </div>
-          </li>
-        </div>
-      ) : (
-        <div>
-          <li>
-            <div className="author_list_pp">
-              <Link to="/author">
-                <img
-                  className="lazy pp-author"
-                  src={topSellersData?.authorImage}
-                  alt=""
-                />
-                <i className="fa fa-check"></i>
-              </Link>
-            </div>
-            <div className="author_list_info">
-              <Link to="/author">{topSellersData?.authorName}</Link>
-              <span>{topSellersData?.price} ETH</span>
             </div>
           </li>
         </div>
