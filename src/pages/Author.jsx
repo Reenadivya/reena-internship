@@ -66,7 +66,7 @@ const Author = () => {
         mountedRef.current = false;
       };
     }
-  }, [loading]);
+  }, [loading, authorData?.authorImage]);
 
   return (
     <>
