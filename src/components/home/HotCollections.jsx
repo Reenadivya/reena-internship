@@ -41,33 +41,35 @@ const HotCollections = () => {
             </div>
           </div>
 
-          <OwlCarousel
-            className="owl-theme"
-            dots={false}
-            items={4}
-            nav={true}
-            margin={10}
-            responsive={{
-              0: {
-                items: 1,
-              },
-              510: {
-                items: 2,
-              },
-              900: {
-                items: 3,
-              },
-              1200: {
-                items: 4,
-              },
-            }}
-            loop>
-            {hotCollectionsData?.map((data, index) => {
-              return (
-                <HotCollection key={index} data={data} loading={loading} />
-              );
-            })}
-          </OwlCarousel>
+          {loading ? null : (
+            <OwlCarousel
+              className="owl-theme"
+              dots={false}
+              items={4}
+              nav={true}
+              margin={10}
+              responsive={{
+                600: {
+                  items: 1,
+                },
+                800: {
+                  items: 2,
+                },
+                1000: {
+                  items: 3,
+                },
+                1200: {
+                  items: 4,
+                },
+              }}
+              loop>
+              {hotCollectionsData?.map((data, index) => {
+                return (
+                  <HotCollection key={index} data={data} loading={loading} />
+                );
+              })}
+            </OwlCarousel>
+          )}
         </div>
       </div>
     </section>
