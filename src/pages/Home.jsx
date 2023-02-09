@@ -7,6 +7,7 @@ import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
 
 const Home = () => {
+  //Any comment
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
