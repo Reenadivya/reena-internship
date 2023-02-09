@@ -4,6 +4,8 @@ import NewItem from "../UI/NewItem";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const NewItems = () => {
   const [newItemsData, setnewItemsData] = useState();
@@ -28,12 +30,15 @@ const NewItems = () => {
 
   useEffect(() => {
     getNewItemsData();
+    Aos.init({
+      duration: 1000,
+    });
   }, []);
 
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade-in" data-aos-once="true">
           <div className="col-lg-12">
             <div className="text-center">
               <h2>New Items</h2>
