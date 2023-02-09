@@ -7,7 +7,11 @@ import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
 
 const Home = () => {
+<<<<<<< HEAD
   //Any comment
+=======
+  //FROM MAIN DO NOT REMOVE!!
+>>>>>>> main
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
